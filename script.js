@@ -4,6 +4,7 @@ const toggle = document.querySelector(".nav-toggle");
 const input = document.querySelector("#search-input");
 const searchResult = document.querySelector(".search-result");
 const filterBtn = document.querySelectorAll(".filter-btn");
+
 let cocktails;
 
 //Navbar toggle button
@@ -16,15 +17,16 @@ toggle.addEventListener("click", function (e) {
 async function getCocktails() {
   const response = await fetch(URL);
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   cocktails = data.drinks;
-  console.log(cocktails);
+  // console.log(cocktails);
   renderData(cocktails);
 }
 getCocktails();
 
 //Rendering data with map
 const renderData = function (cocktails) {
+  searchResult.innerHTML = '';
   cocktails.map((cocktail) => {
     createCocktails(cocktail);
   });
@@ -50,3 +52,15 @@ const createCocktails = function (cocktail) {
   `;
   searchResult.innerHTML += cocktailInfo;
 };
+
+input.addEventListener('input', (e) => {
+  const value = e.target.value;
+  const filter = cocktails.filter(cocktail => {
+    return cocktail.strDrink.toLowerCase().includes(value.toLowerCase())
+  })
+  if(filter.length > 0){
+    return renderData(filter)
+  } else {
+    return searchResult.innerHTML = `<div class="no-item">No Item Founded</div>`
+  }
+})
