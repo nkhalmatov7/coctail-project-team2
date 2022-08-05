@@ -64,3 +64,20 @@ input.addEventListener('input', (e) => {
     return searchResult.innerHTML = `<div class="no-item">No Item Founded</div>`
   }
 })
+
+    //--- Filtered buttons of Category by Anara and Aisulu start here ---
+
+    filterBtn.forEach(el => {
+      el.addEventListener('click', (event)=>{
+        searchResult.innerHTML = '';
+          renderData(filteredBtnOfCategory(cocktails, event.target.innerText))
+      })
+    })
+    function filteredBtnOfCategory(arr, category){
+      if(category === 'All'){
+       return cocktails
+      }
+      else return arr.filter(el => el.strCategory === category)
+    }
+    
+    //--- Filtered buttons of Category by Anara and Aisulu end here ---
