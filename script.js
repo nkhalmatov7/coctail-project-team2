@@ -53,7 +53,7 @@ const createCocktails = function (cocktail) {
   searchResult.innerHTML += cocktailInfo;
 };
 
-// Filtering Coctails Nurlan and Zhassulan start
+//--- Filtering Coctails Nurlan and Zhassulan start
 
 input.addEventListener('input', (e) => {
   const value = e.target.value;
@@ -67,7 +67,7 @@ input.addEventListener('input', (e) => {
   }
 })
 
-// Filtering Coctails Nurlan and Zhassulan finish
+//--- Filtering Coctails Nurlan and Zhassulan finish
 
 
 
