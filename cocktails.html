@@ -35,48 +35,51 @@
         </div>
       </nav> 
      
-     <!-- Search input  -->
-      <div class="search-wrapper">
-         <h1>Search Your Favorite Cocktail</h1>
-        <form class="search-form">
-          <input
-            id="search-input"
-            stype="text"
-            placeholder="Enter name of cocktail...."
-          />
-        </form>
+     <div class="main-container">
+      <div class="cleanWhenBtnDetailsClicked">
+        <!-- Search input  -->
+          <div class="search-wrapper">
+            <h1>Search Your Favorite Cocktail</h1>
+            <form class="search-form">
+              <input
+                id="search-input"
+                stype="text"
+                placeholder="Enter name of cocktail...."
+              />
+            </form>
+          </div>
+      
+        <div class="filter flex">
+          <button class="filter-btn">All</button>
+          <button class="filter-btn">Cocktail</button>
+          <button class="filter-btn">Ordinary Drink</button>
+          <button class="filter-btn">Shot</button>
+          <button class="filter-btn">Coffee / Tea</button>
+          <button class="filter-btn">Other/Unknown</button>
+        </div>
+
+        <div class="search-result">
+          <!-- <div class="cocktail-item">
+              <div class="img-wrapper">
+                <img
+                  src="https://www.liquor.com/thmb/GnTu-oC4mKRUCVztPZqDiAWw4l8=/735x0/whiskey-smash-720x720-recipe-c696cdf017494dbd981e51dca3f4402e.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="cocktail-info">
+                <p class="cocktail-name">ABC</p>
+                <p class="glass">Cocktail glass</p>
+                <p class="cocktail-type">Alcoholic</p>
+                <button class="details">Details</button>
+              </div>
+            </div> -->
+        </div>
       </div>
-   
-    <div class="filter flex">
-      <button class="filter-btn">All</button>
-      <button class="filter-btn">Cocktail</button>
-      <button class="filter-btn">Ordinary Drink</button>
-      <button class="filter-btn">Shot</button>
-      <button class="filter-btn">Coffee / Tea</button>
-      <button class="filter-btn">Other/Unknown</button>
-    </div>
+      <div class="overlay-btn-details"></div>
 
-    <div class="search-result">
-      <!-- <div class="cocktail-item">
-          <div class="img-wrapper">
-            <img
-              src="https://www.liquor.com/thmb/GnTu-oC4mKRUCVztPZqDiAWw4l8=/735x0/whiskey-smash-720x720-recipe-c696cdf017494dbd981e51dca3f4402e.jpg"
-              alt=""
-            />
-          </div>
-          <div class="cocktail-info">
-            <p class="cocktail-name">ABC</p>
-            <p class="glass">Cocktail glass</p>
-            <p class="cocktail-type">Alcoholic</p>
-            <button class="details">Details</button>
-          </div>
-        </div> -->
-    </div>
-    
-
-   
+  </div>
 
     <script type="module" src="script.js"></script>
-    <script type ="module" src="./cocktails.js"></script>
+ 
   </body>
 </html>

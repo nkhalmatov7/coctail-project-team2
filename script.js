@@ -6,6 +6,7 @@ const searchResult = document.querySelector(".search-result");
 const filterBtn = document.querySelectorAll(".filter-btn");
 
 let cocktails;
+let cocktailId;
 
 //Navbar toggle button
 toggle.addEventListener("click", function (e) {
@@ -51,7 +52,32 @@ const createCocktails = function (cocktail) {
         </div>
   `;
   searchResult.innerHTML += cocktailInfo;
-};
+
+
+  const btnDetails = document.querySelectorAll('.details');
+  
+  btnDetails.forEach(btn=>{
+
+    btn.addEventListener("click", (event)=>{ 
+     
+      const id = event.target.dataset.id
+      
+      async function getId () {
+        const response = await fetch (`https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+
+        // const data = await response.json();
+        // cocktailId = data.drinks[0]
+        showDetails(cocktail)
+        
+        
+      }
+      getId();
+      
+
+    })
+  })
+
+}
 
 input.addEventListener('input', (e) => {
   const value = e.target.value;
@@ -81,3 +107,54 @@ input.addEventListener('input', (e) => {
     }
     
     //--- Filtered buttons of Category by Anara and Aisulu end here ---
+
+    //--- Detail buttons of drinks by Zada and Mika start here---
+  function showDetails(cocktail){
+    const cleanPlaceToDisplay= document.querySelector('.cleanWhenBtnDetailsClicked')
+    const placeToDisplayDetails = document.querySelector('.overlay-btn-details')
+    cleanPlaceToDisplay.style.display = "none";
+
+
+
+      const list = [cocktail.strIngredient1, cocktail.strIngredient2, cocktail.strIngredient3, cocktail.strIngredient4, cocktail.strIngredient5  ];
+
+      let cocktailDetails = `
+        <button class="back-to-home">BACK TO HOME</button>
+        <h1 class="header-details">${cocktail.strDrink}</h1>
+        <div class="container-details">
+          <div class="img-wrapper">
+            <img class="image-cocktail-details" src=${cocktail.strDrinkThumb} alt="image">
+          </div>
+          <div class="content-wrapper">
+            <p> <span class = "drinks-details-span"> Name:</span> <span class="span-name">${cocktail.strDrink}</span></p>
+            <p> <span class = "drinks-details-span">Category: </span> <span class="span-category">${cocktail.strCategory}</span></p>
+            <p> <span class = "drinks-details-span">Info:</span> <span class="span-info">${cocktail.strAlcoholic}</span></p>
+            <p> <span class = "drinks-details-span">Glass: </span> <span class="span-glass>${cocktail.strGlass}</span></p>
+            <p> <span class = "drinks-details-span">Instructions: </span><span class="span-instructions">${cocktail.strInstructions}</span></p>
+            <p> <span class = "drinks-details-span">Ingredients: </span> <span class="span-ingredients">${list.map(ingredient=>{
+              if(list.length > 0){
+                return ingredient
+              }
+            }).join(" ")}</span></p>
+          </div>
+        </div>`;
+
+        placeToDisplayDetails.innerHTML = cocktailDetails;
+
+        const btnBackToHome= document.querySelectorAll(".back-to-home");
+        btnBackToHome.forEach(btnBack=>{
+        btnBack.addEventListener('click', ()=>{
+        placeToDisplayDetails.innerHTML = "";
+        cleanPlaceToDisplay.style.display = "block"
+    
+  })
+
+  })
+
+
+
+
+    } 
+
+
+    //--- Detail buttons of drinks by Zada and Mika end here--- 
