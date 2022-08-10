@@ -288,7 +288,7 @@ img {
   display:flex;
   margin:20px;
 }
-.img-wrapper{
+.img-wrapper-details{
   width:50%;
   margin:auto
 }
@@ -298,6 +298,8 @@ img {
 .content-wrapper{
   width:50%;
   margin:auto 30px;
+  font-size: 20px;
+  line-height: 2.5rem;
   
 }
 .content-wrapper p {
@@ -357,12 +359,15 @@ img {
     display: flex;
     flex-direction: column;
   }
-  .img-wrapper{
+  .img-wrapper-details{
     width:100%;
+    text-align: center;
   }
   .content-wrapper{
     width:80%;
     margin: 30px auto;
+    font-size:20px;
+    line-height: 2.5rem;
   }
 
 /* head by Nurlan */

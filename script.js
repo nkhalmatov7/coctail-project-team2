@@ -18,7 +18,7 @@ toggle.addEventListener("click", function (e) {
 async function getCocktails() {
   const response = await fetch(URL);
   const data = await response.json();
-  // console.log(data);
+  console.log(data);
   cocktails = data.drinks;
   // console.log(cocktails);
   renderData(cocktails);
@@ -47,7 +47,7 @@ const createCocktails = function (cocktail) {
             <p class="cocktail-name">${cocktail.strDrink}</p>
             <p class="glass">${cocktail.strGlass}</p>
             <p class="cocktail-type">${cocktail.strAlcoholic}</p>
-            <button class="details">Details</button>
+            <button data-id= ${cocktail.idDrink} class="details">Details</button>
           </div>
         </div>
   `;
@@ -61,13 +61,16 @@ const createCocktails = function (cocktail) {
     btn.addEventListener("click", (event)=>{ 
      
       const id = event.target.dataset.id
+      console.log(id)
       
       async function getId () {
         const response = await fetch (`https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
 
-        // const data = await response.json();
-        // cocktailId = data.drinks[0]
-        showDetails(cocktail)
+
+        const data = await response.json();
+
+        cocktailId = data.drinks[0]
+        showDetails(cocktailId)
         
         
       }
@@ -128,7 +131,7 @@ input.addEventListener('input', (e) => {
         <button class="back-to-home">BACK TO HOME</button>
         <h1 class="header-details">${cocktail.strDrink}</h1>
         <div class="container-details">
-          <div class="img-wrapper">
+          <div class="img-wrapper-details">
             <img class="image-cocktail-details" src=${cocktail.strDrinkThumb} alt="image">
           </div>
           <div class="content-wrapper">
