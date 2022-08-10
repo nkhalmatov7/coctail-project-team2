@@ -132,6 +132,51 @@ img {
 
 /* navbar ends */
 
+/* Home Page */
+
+.slider-container {
+  width: 90%;
+  height: 90vh;
+  margin: 3rem auto;
+  display: grid;
+  place-self: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: block;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  z-index: 10;
+}
+
+.slider img {
+  object-fit: cover;
+}
+
+.about {
+  display: grid;
+  text-align: center;
+  letter-spacing: var(--letter-spacing);
+}
+
+.about h1 {
+  place-self: center;
+  font-size: 3rem;
+  margin: 3rem 0;
+}
+
+.about p {
+  place-self: center;
+  width: 70%;
+  margin: auto;
+  font-size: 1.5rem;
+  padding: 3rem;
+  line-height: 3rem;
+}
+
 /* Search input  starts */
 
 .search-wrapper {
@@ -166,6 +211,11 @@ img {
   background-color: #d6e4eb;
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
+}
+
+.loading {
+  max-width: 300px;
+  margin: 2rem auto;
 }
 
 /* Search form ends */
@@ -229,6 +279,24 @@ img {
   color: gray;
 }
 
+button {
+  background-color: var(--darker-blue);
+  padding: 0.5rem 1.5rem;
+  color: white;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  border-radius: var(--border-radius);
+  border: none;
+  margin: 1rem 0;
+  transition: ease-in-out 0.5s;
+}
+
+button:hover {
+  background-color: #2891ce;
+  transform: scale(1.05);
+}
+
 .details {
   background-color: var(--darker-blue);
   padding: 0.5rem 1.5rem;
@@ -273,47 +341,43 @@ img {
   color: whitesmoke;
 }
 
-
 /* drinks details css Zada */
-.overlay-btn-details{
-  width:70%;
-  margin:30px auto;
-  display:flex;
+.overlay-btn-details {
+  width: 70%;
+  margin: 30px auto;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  
- 
 }
-.container-details{
-  display:flex;
-  margin:20px;
+.container-details {
+  display: flex;
+  margin: 20px;
 }
-.img-wrapper-details{
-  width:50%;
-  margin:auto
+.img-wrapper-details {
+  width: 50%;
+  margin: auto;
 }
-.image-cocktail-details{
-  width:70%;
+.image-cocktail-details {
+  width: 70%;
 }
-.content-wrapper{
-  width:50%;
-  margin:auto 30px;
+.content-wrapper {
+  width: 50%;
+  margin: auto 30px;
   font-size: 20px;
   line-height: 2.5rem;
-  
+  letter-spacing: var(--letter-spacing);
 }
 .content-wrapper p {
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
-.drinks-details-span{ 
+.drinks-details-span {
   background-color: #2891ce;
   padding: 2px;
   border-radius: 3px;
-  
-
+  margin-right: 1rem;
 }
-.back-to-home{
-  margin:30px;
+.back-to-home {
+  margin: 30px;
   font-size: 1.1rem;
   font-weight: 600;
   background-color: rgb(223, 223, 223);
@@ -324,22 +388,23 @@ img {
   border: none;
   transition: ease-in-out 0.5s;
 }
-.back-to-home:hover{
+.back-to-home:hover {
   background-color: var(--secondary-color);
   color: whitesmoke;
 }
-/* head */
+
+/* message displayed */
 .search-result .no-item {
-  width: 700px;
   border: rgb(237, 154, 154) 1px solid;
   border-radius: 10px;
   font-size: 30px;
-  padding: 20px;
+  padding: 2rem 0;
   border-left: 30px solid #883c3c;
   color: red;
   font-weight: bold;
   background-color: #f0bfbf;
-
+  text-align: center;
+  letter-spacing: var(--letter-spacing);
 }
 
 /* Media query */
@@ -354,27 +419,26 @@ img {
     gap: 1rem;
     font-size: 1.2rem;
   }
-/* css for details by Zada and Mika */
-  .container-details{
+  /* css for details by Zada and Mika */
+  .container-details {
     display: flex;
     flex-direction: column;
   }
-  .img-wrapper-details{
-    width:100%;
+  .img-wrapper-details {
+    width: 100%;
     text-align: center;
   }
-  .content-wrapper{
-    width:80%;
+  .content-wrapper {
+    width: 80%;
     margin: 30px auto;
-    font-size:20px;
+    font-size: 20px;
     line-height: 2.5rem;
   }
 
-/* head by Nurlan */
+  /* head by Nurlan */
   .search-result .no-item {
     width: 450px;
     font-size: 25px;
-
   }
 }
 @media (max-width: 556px) {
@@ -417,14 +481,13 @@ img {
   }
 }
 
-
 /* Contact page */
 .contact-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  width: 50%;
+  width: 60%;
   margin: 100px auto;
   background-color: var(--light-blue);
   padding: 5rem;
@@ -440,7 +503,7 @@ img {
 }
 
 .contact-form input {
-  width: 60%;
+  width: 80%;
   padding: 1rem;
   font-size: 1.2rem;
   border-radius: 0.4rem;
@@ -472,7 +535,7 @@ img {
 }
 
 .alert {
-  width: 70%;
+  width: 90%;
   background-color: rgb(235, 191, 191);
   color: red;
   text-transform: capitalize;
@@ -483,6 +546,29 @@ img {
   display: none;
 }
 
-.no-item {
-  width: 100%;
+@media (max-width: 900px) {
+  .contact-form {
+    width: 80%;
+  }
+
+  .contact-form input {
+    width: 90%;
+  }
+  #submit-btn {
+    width: 30%;
+  }
+}
+
+@media (max-width: 556px) {
+  .contact-form {
+    width: 95%;
+  }
+
+  .contact-form input {
+    width: 100%;
+  }
+
+  #submit-btn {
+    width: 60%;
+  }
 }
