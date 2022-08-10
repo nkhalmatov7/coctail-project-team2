@@ -53,6 +53,8 @@ const createCocktails = function (cocktail) {
   searchResult.innerHTML += cocktailInfo;
 };
 
+//--- Filtering Coctails Nurlan and Zhassulan start
+
 input.addEventListener('input', (e) => {
   const value = e.target.value;
   const filter = cocktails.filter(cocktail => {
@@ -64,6 +66,10 @@ input.addEventListener('input', (e) => {
     return searchResult.innerHTML = `<div class="no-item">No Item Founded</div>`
   }
 })
+
+//--- Filtering Coctails Nurlan and Zhassulan finish
+
+
 
     //--- Filtered buttons of Category by Anara and Aisulu start here ---
 
