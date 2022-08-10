@@ -406,6 +406,13 @@ button:hover {
   text-align: center;
   letter-spacing: var(--letter-spacing);
 }
+/* styling input loading by Zada */
+.input-loading-image{
+  width:200px;
+  display:none;
+  margin:auto;
+  
+}
 
 /* Media query */
 
