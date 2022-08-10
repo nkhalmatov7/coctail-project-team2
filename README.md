@@ -1,5 +1,7 @@
 # coctail-project-team2
 
+- deployed on https://cocktails-bar-project.netlify.app/
+
 Team Members
 
 1. Zhassulan Sarbayev - responsible for search Input feauture
