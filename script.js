@@ -4,6 +4,8 @@ const toggle = document.querySelector(".nav-toggle");
 const input = document.querySelector("#search-input");
 const searchResult = document.querySelector(".search-result");
 const filterBtn = document.querySelectorAll(".filter-btn");
+const loadingImage = document.querySelector(".input-loading-image");
+
 
 let cocktails;
 let cocktailId;
@@ -97,6 +99,27 @@ input.addEventListener('input', (e) => {
 })
 
 //--- Filtering Coctails Nurlan and Zhassulan finish
+
+
+//---Zada and Akzhol input loading starts here
+let loading;
+
+input.addEventListener('keyup',()=>{
+
+  loading = setTimeout(()=>{
+    searchResult.style.display = "none";
+    loadingImage.style.display = "grid";
+  },50)
+  setTimeout(()=>{
+    searchResult.style.display = "grid";
+    loadingImage.style.display = "none";
+
+  },500)
+
+})
+
+
+//---Zada and Akzhol input loading ends here
 
 
 

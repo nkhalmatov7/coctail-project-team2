@@ -341,6 +341,13 @@ img {
   background-color: #f0bfbf;
 
 }
+/* styling input loading by Zada */
+.input-loading-image{
+  width:200px;
+  display:none;
+  margin:auto;
+  
+}
 
 /* Media query */
 
