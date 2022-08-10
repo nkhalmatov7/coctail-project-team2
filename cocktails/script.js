@@ -7,8 +7,6 @@ const searchResult = document.querySelector(".search-result");
 const btnContainer = document.querySelector(".filter");
 const loadingImage = document.querySelector(".input-loading-image");
 
-
-
 let cocktails;
 let cocktailId;
 
@@ -89,8 +87,12 @@ const createCocktails = function (cocktail) {
 };
 
 //--- Filtering Cocktails Nurlan and Zhassulan start
-
+//---Zada and Akzhol input loading starts here
 input.addEventListener("input", (e) => {
+  loadingImage.style.display = "grid";
+  setTimeout(() => {
+    loadingImage.style.display = "none";
+  }, 500);
   const value = e.target.value;
   const filter = cocktails.filter((cocktail) => {
     return cocktail.strDrink.toLowerCase().includes(value.toLowerCase());
@@ -104,40 +106,7 @@ input.addEventListener("input", (e) => {
   }
 });
 
-//---Zada and Akzhol input loading starts here
-let loadingInput;
-
-input.addEventListener('keyup',()=>{
-
-  loadingInput = setTimeout(()=>{
-    searchResult.style.display = "none";
-    loadingImage.style.display = "grid";
-  },50)
-  setTimeout(()=>{
-    searchResult.style.display = "grid";
-    loadingImage.style.display = "none";
-
-  },500)
-
-})
-
-
-//---Zada and Akzhol input loading ends here
-
 //--- Filtered buttons of Category by Anara and Aisulu start here ---
-
-// filterBtn.forEach((el) => {
-//   el.addEventListener("click", (event) => {
-//     console.log(event.target.innerText);
-//     searchResult.innerHTML = "";
-//     renderData(filteredBtnOfCategory(cocktails, event.target.innerText));
-//   });
-// });
-// function filteredBtnOfCategory(arr, category) {
-//   if (category === "ALL") {
-//     return cocktails;
-//   } else return arr.filter((el) => el.strCategory.includes(category));
-// }
 
 //category buttons
 function displayCategoryBtns(cocktails) {
@@ -257,5 +226,3 @@ function showDetails(cocktail) {
     });
   });
 }
-
-//--- Detail buttons of drinks by Zada and Mika end here---
