@@ -408,9 +408,10 @@ button:hover {
 }
 /* styling input loading by Zada */
 .input-loading-image{
-  width:200px;
+  width:300px;
   display:none;
   margin:auto;
+  
   
 }
 

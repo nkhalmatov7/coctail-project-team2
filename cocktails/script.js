@@ -5,6 +5,9 @@ const URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const input = document.querySelector("#search-input");
 const searchResult = document.querySelector(".search-result");
 const btnContainer = document.querySelector(".filter");
+const loadingImage = document.querySelector(".input-loading-image");
+
+
 
 let cocktails;
 let cocktailId;
@@ -100,6 +103,26 @@ input.addEventListener("input", (e) => {
     return (searchResult.innerHTML = `<h1 class="no-item">No Cocktails Matched Your Search Criteria</h1>`);
   }
 });
+
+//---Zada and Akzhol input loading starts here
+let loadingInput;
+
+input.addEventListener('keyup',()=>{
+
+  loadingInput = setTimeout(()=>{
+    searchResult.style.display = "none";
+    loadingImage.style.display = "grid";
+  },50)
+  setTimeout(()=>{
+    searchResult.style.display = "grid";
+    loadingImage.style.display = "none";
+
+  },500)
+
+})
+
+
+//---Zada and Akzhol input loading ends here
 
 //--- Filtered buttons of Category by Anara and Aisulu start here ---
 
