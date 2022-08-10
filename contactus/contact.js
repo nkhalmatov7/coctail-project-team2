@@ -1,3 +1,7 @@
+import { toggleBar } from "../toggle.js";
+
+toggleBar();
+
 const form = document.querySelector(".contact-form");
 const alert = document.querySelector(".alert");
 
