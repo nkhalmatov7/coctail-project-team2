@@ -10,17 +10,8 @@ const loadingImage = document.querySelector(".input-loading-image");
 let cocktails;
 let cocktailId;
 
-//Navbar toggle button
+//Toggle button appears on smaller screen
 toggleBar();
-
-function loading() {
-  searchResult.style.display = "block";
-  searchResult.innerHTML = `
-  <div class='loading'>
-    <img src="https://cutewallpaper.org/21/loading-gif-transparent-background/Bee-Hollow-Farm-beekeeping-classes-and-events-near-Schodack-.gif" alt="loading"/>
-  </div>
-  `;
-}
 
 // Fetch data from API
 async function getCocktails() {
@@ -35,7 +26,17 @@ async function getCocktails() {
 }
 getCocktails();
 
-//Rendering data with map
+//loading appears when page is loaded
+function loading() {
+  searchResult.style.display = "block";
+  searchResult.innerHTML = `
+  <div class='loading'>
+    <img src="https://cutewallpaper.org/21/loading-gif-transparent-background/Bee-Hollow-Farm-beekeeping-classes-and-events-near-Schodack-.gif" alt="loading"/>
+  </div>
+  `;
+}
+
+//Rendering data to UI
 const renderData = function (cocktails) {
   searchResult.style.display = "grid";
   searchResult.innerHTML = "";
@@ -64,6 +65,7 @@ const createCocktails = function (cocktail) {
   `;
   searchResult.innerHTML += cocktailInfo;
 
+  //Details about cocktail will appear when clicked on button
   const btnDetails = document.querySelectorAll(".details");
 
   btnDetails.forEach((btn) => {
@@ -85,6 +87,68 @@ const createCocktails = function (cocktail) {
     });
   });
 };
+
+//--- Detail buttons of drinks by Zada and Mika start here---
+function showDetails(cocktail) {
+  const cleanPlaceToDisplay = document.querySelector(
+    ".cleanWhenBtnDetailsClicked"
+  );
+  const placeToDisplayDetails = document.querySelector(".overlay-btn-details");
+  cleanPlaceToDisplay.style.display = "none";
+
+  const list = [
+    cocktail.strIngredient1,
+    cocktail.strIngredient2,
+    cocktail.strIngredient3,
+    cocktail.strIngredient4,
+    cocktail.strIngredient5,
+  ];
+
+  let cocktailDetails = `
+        <button class="back-to-home">BACK TO HOME</button>
+        <h1 class="header-details">${cocktail.strDrink}</h1>
+        <div class="container-details">
+          <div class="img-wrapper-details">
+            <img class="image-cocktail-details" src=${
+              cocktail.strDrinkThumb
+            } alt="image">
+          </div>
+          <div class="content-wrapper">
+            <p> <span class = "drinks-details-span"> Name:</span> <span class="span-name">${
+              cocktail.strDrink
+            }</span></p>
+            <p> <span class = "drinks-details-span">Category: </span> <span class="span-category">${
+              cocktail.strCategory
+            }</span></p>
+            <p> <span class = "drinks-details-span">Info:</span> <span class="span-info">${
+              cocktail.strAlcoholic
+            }</span></p>
+            <p> <span class = "drinks-details-span">Glass: </span> <span class="span-glass>${
+              cocktail.strGlass
+            }</span></p>
+            <p> <span class = "drinks-details-span">Instructions: </span><span class="span-instructions">${
+              cocktail.strInstructions
+            }</span></p>
+            <p> <span class = "drinks-details-span">Ingredients: </span> <span class="span-ingredients">${list
+              .map((ingredient) => {
+                if (list.length > 0) {
+                  return ingredient;
+                }
+              })
+              .join(" ")}</span></p>
+          </div>
+        </div>`;
+
+  placeToDisplayDetails.innerHTML = cocktailDetails;
+
+  const btnBackToHome = document.querySelectorAll(".back-to-home");
+  btnBackToHome.forEach((btnBack) => {
+    btnBack.addEventListener("click", () => {
+      placeToDisplayDetails.innerHTML = "";
+      cleanPlaceToDisplay.style.display = "block";
+    });
+  });
+}
 
 //--- Filtering Cocktails Nurlan and Zhassulan start
 //---Zada and Akzhol input loading starts here
@@ -148,81 +212,16 @@ function displayCategoryBtns(cocktails) {
   filterBtns.forEach((filterBtn) => {
     filterBtn.addEventListener("click", function (e) {
       const category = e.currentTarget.dataset.id;
-      console.log(category);
       const cocktailItems = cocktails.filter((cocktailItem) => {
         if (cocktailItem.strCategory.includes(category)) {
           return cocktailItem;
         }
       });
       if (category === "All") {
-        console.log(cocktails);
         return renderData(cocktails);
       } else {
-        console.log(cocktailItems);
         return renderData(cocktailItems);
       }
-    });
-  });
-}
-
-//--- Detail buttons of drinks by Zada and Mika start here---
-function showDetails(cocktail) {
-  const cleanPlaceToDisplay = document.querySelector(
-    ".cleanWhenBtnDetailsClicked"
-  );
-  const placeToDisplayDetails = document.querySelector(".overlay-btn-details");
-  cleanPlaceToDisplay.style.display = "none";
-
-  const list = [
-    cocktail.strIngredient1,
-    cocktail.strIngredient2,
-    cocktail.strIngredient3,
-    cocktail.strIngredient4,
-    cocktail.strIngredient5,
-  ];
-
-  let cocktailDetails = `
-        <button class="back-to-home">BACK TO HOME</button>
-        <h1 class="header-details">${cocktail.strDrink}</h1>
-        <div class="container-details">
-          <div class="img-wrapper-details">
-            <img class="image-cocktail-details" src=${
-              cocktail.strDrinkThumb
-            } alt="image">
-          </div>
-          <div class="content-wrapper">
-            <p> <span class = "drinks-details-span"> Name:</span> <span class="span-name">${
-              cocktail.strDrink
-            }</span></p>
-            <p> <span class = "drinks-details-span">Category: </span> <span class="span-category">${
-              cocktail.strCategory
-            }</span></p>
-            <p> <span class = "drinks-details-span">Info:</span> <span class="span-info">${
-              cocktail.strAlcoholic
-            }</span></p>
-            <p> <span class = "drinks-details-span">Glass: </span> <span class="span-glass>${
-              cocktail.strGlass
-            }</span></p>
-            <p> <span class = "drinks-details-span">Instructions: </span><span class="span-instructions">${
-              cocktail.strInstructions
-            }</span></p>
-            <p> <span class = "drinks-details-span">Ingredients: </span> <span class="span-ingredients">${list
-              .map((ingredient) => {
-                if (list.length > 0) {
-                  return ingredient;
-                }
-              })
-              .join(" ")}</span></p>
-          </div>
-        </div>`;
-
-  placeToDisplayDetails.innerHTML = cocktailDetails;
-
-  const btnBackToHome = document.querySelectorAll(".back-to-home");
-  btnBackToHome.forEach((btnBack) => {
-    btnBack.addEventListener("click", () => {
-      placeToDisplayDetails.innerHTML = "";
-      cleanPlaceToDisplay.style.display = "block";
     });
   });
 }

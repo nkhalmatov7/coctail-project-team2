@@ -67,6 +67,9 @@ img {
   align-items: center;
   font-size: 1.2rem;
   padding: 0.5rem 5rem;
+  box-shadow: 0px 2px 3px 2px rgba(255, 252, 252, 0.88);
+  -webkit-box-shadow: 0px 2px 3px 2px rgba(255, 252, 252, 0.497);
+  -moz-box-shadow: 0px 2px 3px 2px rgba(255, 252, 252, 0.88);
 }
 
 .nav-header,
@@ -85,6 +88,10 @@ img {
 #cocktail-logo {
   max-width: 60px;
   margin: 0 1.5rem;
+}
+
+.nav-list a:hover {
+  color: #63b2e0;
 }
 .nav-toggle {
   width: 60px;
@@ -106,7 +113,7 @@ img {
 .links {
   flex: 2 0 0;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .links li a {
@@ -188,6 +195,9 @@ img {
   margin: 5rem auto;
   background-color: var(--secondary-color);
   border-radius: var(--border-radius);
+  box-shadow: 2px 2px 3px 2px rgba(255, 252, 252, 0.88);
+  -webkit-box-shadow: 2px 2px 3px 2px rgba(255, 252, 252, 0.497);
+  -moz-box-shadow: 2px 2px 3px 2px rgba(255, 252, 252, 0.88);
 }
 .search-wrapper h1 {
   font-size: 1.8rem;
@@ -421,17 +431,31 @@ button:hover {
 }
 
 /* Media query */
+@media (max-width: 900px) {
+  .nav-center {
+    padding: 1rem 0;
+  }
+}
 
 @media (max-width: 768px) {
   .search-result {
     grid-gap: 10px;
   }
+
+  .nav-center {
+    padding: 1rem 0;
+  }
   .nav-header,
   .links,
   .social-icons {
-    gap: 1rem;
-    font-size: 1.2rem;
+    gap: 1.5rem;
+    font-size: 1rem;
   }
+
+  .social-icons {
+    gap: 1rem;
+  }
+
   /* css for details by Zada and Mika */
   .container-details {
     display: flex;
@@ -457,6 +481,7 @@ button:hover {
 @media (max-width: 556px) {
   .nav-center {
     display: block;
+    padding: 0.5rem 3rem;
   }
   .nav-header {
     width: 100%;
@@ -485,7 +510,8 @@ button:hover {
   }
 
   .filter-btn {
-    width: 50%;
+    width: 60%;
+    margin-bottom: 0;
   }
 
   .search-result .no-item {
